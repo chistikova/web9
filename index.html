@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <h2>Для регистрации необходимо указать ваши персональные данные</h2>
+    <form onsubmit="CheckData(); return false;">
+        <label>*Имя:</label>
+        <input type="text" id="uname" required><br><br>
+        <label>Организация(компания)*:</label>
+        <input type="text" id="organization" required><br><br>
+        <label>Телефон:</label>
+        <input type="text" id="phone" required><br><br>
+        <label>*Адрес эл.почты:</label>
+        <input type="text" id="email" required><br><br>
+        <button type="submit">Отправить</button>
+        <button type="reset">Очистить</button>
+    </form>
+    <p>*Поля обязательные для заполнения</p>
+    <script>
+        function CheckData() {//обязательные поля
+            if (document.getElementById("uname").value.length === 0 ||
+                document.getElementById("email").value.length === 0) {
+                alert("Пожалуйста, заполните все обязательные поля.");
+                return;
+            }
+            var emailPattern = /^[\.\-_A-Za-z0-9]+?@[\.\-A-Za-z0-9]+?\.[A-Za-z0-9]{2,6}$/; //корректность email
+            if (!emailPattern.test(document.getElementById("email").value)) {
+                alert("Пожалуйста, введите корректный адрес электронной почты.");
+                return;
+            }
+            var phonePattern = /^\+7-\d{3}-\d{3}-\d{4}$/; //корректность phone
+            if (!phonePattern.test(document.getElementById("phone").value)) {
+                alert("Пожалуйста, введите корректный номер телефона.");
+                return;
+            }
+            // Добавьте на странице секцию JavaScript кода, описывающего функцию-обработчик:
+            var ans = confirm("Вы уверены, что хотите отправить введенные данные?");
+            if (ans) {
+                alert("Данные отправлены.");
+            }
+        }
+    </script>
+</body>
+</html>
