@@ -9,10 +9,10 @@
     <form onsubmit="CheckData(); return false;">
         <label>*Имя:</label>
         <input type="text" id="uname" required><br><br>
-        <label>Организация(компания)*:</label>
+        <label>Организация(компания):</label>
         <input type="text" id="organization" required><br><br>
         <label>Телефон:</label>
-        <input type="text" id="phone" required><br><br>
+        <input type="tel" id="phone" pattern="\+7-\d{3}-\d{3}-\d{2}-\d{2}" placeholder="+7-xxx-xxx-xx-xx" required><br><br>
         <label>*Адрес эл.почты:</label>
         <input type="text" id="email" required><br><br>
         <button type="submit">Отправить</button>
@@ -31,7 +31,7 @@
                 alert("Пожалуйста, введите корректный адрес электронной почты.");
                 return;
             }
-            var phonePattern = /^\+7-\d{3}-\d{3}-\d{4}$/; //корректность phone
+            var phonePattern = /^\+7-\d{3}-\d{3}-\d{2}-\d{2}$/; //корректность phone
             if (!phonePattern.test(document.getElementById("phone").value)) {
                 alert("Пожалуйста, введите корректный номер телефона.");
                 return;
